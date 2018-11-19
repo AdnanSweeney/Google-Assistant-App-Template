@@ -3,6 +3,10 @@
 const functions = require('firebase-functions');
 const {WebhookClient} = require('dialogflow-fulfillment');
 const {Card, Suggestion} = require('dialogflow-fulfillment');
+
+const welcome = require('./intentHandlers/welcome');
+const fallback = require('./intentHandlers/fallback');
+const giveRandomNumber = require('./intentHandlers/giveRandomNumber');
  
 process.env.DEBUG = 'dialogflow:debug'; // enables lib debugging statements
 
@@ -10,36 +14,6 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest((request, resp
   const agent = new WebhookClient({ request, response });
   console.log('Dialogflow Request headers: ' + JSON.stringify(request.headers));
   console.log('Dialogflow Request body: ' + JSON.stringify(request.body));
-
-  function welcome(agent) {
-    agent.add(`Welcome, ask me to tell you a random number!`);
-  }
-
-  function giveRandomNumber(agent) {
-
-    let minNum = 1;
-    let maxNum = 1000;
-
-    let agentMinNum = agent.parameters['minNum'];
-    let agentMaxNum = agent.parameters['maxNum'];
-
-    if (agentMinNum) {
-      minNum = agentMinNum;
-    }
-
-    if (agentMaxNum) {
-      maxNum = agentMaxNum;
-    }
-
-    let rand = Math.floor(Math.random() * maxNum) + minNum;
-
-    agent.add(`Here you go! ${rand}`);
-  }
- 
-  function fallback(agent) {
-    agent.add(`I didn't understand`);
-    agent.add(`I'm sorry, can you try again?`);
-}
 
   // Run the proper function handler based on the matched Dialogflow intent name
   let intentMap = new Map();
