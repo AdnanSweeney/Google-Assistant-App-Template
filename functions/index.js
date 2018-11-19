@@ -16,8 +16,24 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest((request, resp
   }
 
   function giveRandomNumber(agent) {
-    let int = Math.random();
-    agent.add(`Here you go! ${int}`);
+
+    let minNum = 1;
+    let maxNum = 1000;
+
+    let agentMinNum = agent.parameters['minNum'];
+    let agentMaxNum = agent.parameters['maxNum'];
+
+    if (agentMinNum) {
+      minNum = agentMinNum;
+    }
+
+    if (agentMaxNum) {
+      maxNum = agentMaxNum;
+    }
+
+    let rand = Math.floor(Math.random() * maxNum) + minNum;
+
+    agent.add(`Here you go! ${rand}`);
   }
  
   function fallback(agent) {

@@ -21,7 +21,7 @@
   },
   "defaultTimezone": "America/New_York",
   "webhook": {
-    "url": "https://us-central1-templateagent-f4f03.cloudfunctions.net/dialogflowFirebaseFulfillment",
+    "url": "https://37822ef0.ngrok.io/templateagent-f4f03/us-central1/dialogflowFirebaseFulfillment",
     "headers": {
       "": ""
     },
