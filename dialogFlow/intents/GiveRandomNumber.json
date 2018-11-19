@@ -1,0 +1,49 @@
+{
+  "id": "14f9ed57-fc12-4714-8428-b1273e5064ce",
+  "name": "GiveRandomNumber",
+  "auto": true,
+  "contexts": [],
+  "responses": [
+    {
+      "resetContexts": false,
+      "affectedContexts": [],
+      "parameters": [
+        {
+          "id": "1730017e-b6a5-497f-864f-901d7f354c74",
+          "required": false,
+          "dataType": "@sys.number",
+          "name": "minNum",
+          "value": "$minNum",
+          "isList": false
+        },
+        {
+          "id": "3b669985-95c2-400f-8384-adedb80794bd",
+          "required": false,
+          "dataType": "@sys.number",
+          "name": "maxNum",
+          "value": "$maxNum",
+          "isList": false
+        }
+      ],
+      "messages": [
+        {
+          "type": 0,
+          "lang": "en",
+          "speech": []
+        }
+      ],
+      "defaultResponsePlatforms": {},
+      "speech": []
+    }
+  ],
+  "priority": 500000,
+  "webhookUsed": true,
+  "webhookForSlotFilling": false,
+  "lastUpdate": 1542657533,
+  "fallbackIntent": false,
+  "events": [
+    {
+      "name": "GOOGLE_ASSISTANT_WELCOME"
+    }
+  ]
+}

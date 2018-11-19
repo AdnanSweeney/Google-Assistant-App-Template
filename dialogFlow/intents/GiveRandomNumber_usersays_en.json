@@ -1,0 +1,54 @@
+[
+  {
+    "id": "1318f964-ccf2-495a-af2a-492cfe283879",
+    "data": [
+      {
+        "text": "give me a random number between ",
+        "userDefined": false
+      },
+      {
+        "text": "1",
+        "alias": "minNum",
+        "meta": "@sys.number",
+        "userDefined": false
+      },
+      {
+        "text": " and ",
+        "userDefined": false
+      },
+      {
+        "text": "10",
+        "alias": "maxNum",
+        "meta": "@sys.number",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 1542656628
+  },
+  {
+    "id": "faef0f20-b7d9-425e-9e44-486e5abbe1b1",
+    "data": [
+      {
+        "text": "tell me a random number",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 1542656628
+  },
+  {
+    "id": "d55017e0-f64b-4091-9e17-d591f1a50577",
+    "data": [
+      {
+        "text": "random number",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 1542656628
+  }
+]
