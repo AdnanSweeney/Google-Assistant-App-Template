@@ -5,15 +5,15 @@ function giveRandomNumber(agent) {
     let minNum = 1;
     let maxNum = 1000;
 
-    let agentMinNum = agent.parameters['minNum'];
-    let agentMaxNum = agent.parameters['maxNum'];
+    let userMin = agent.parameters['minNum'];
+    let userMax = agent.parameters['maxNum'];
 
-    if (agentMinNum) {
-      minNum = agentMinNum;
+    if (userMin !== undefined) {
+      minNum = userMin;
     }
 
-    if (agentMaxNum) {
-      maxNum = agentMaxNum;
+    if (userMaxuserMin !== undefined) {
+      maxNum = userMax;
     }
 
     let rand = getRandomInclusive(minNum, maxNum);
