@@ -1,25 +1,24 @@
-const getRandomInclusive = require('../helpers/getRandomInclusive');
+const { getRandomInt } = require('../helpers/getRandom');
 
 function giveRandomNumber(agent) {
 
     let minNum = 1;
 
+    // Check if the user has given any parameters
     let userMin = agent.parameters['minNum'];
     let userMax = agent.parameters['maxNum'];
 
-    if (userMin !== "") {
-      minNum = userMin;
-    }
+    // If min was given update minNum
+    minNum = (userMin !== "" ? userMin : minNum);
 
     let maxNum = minNum + 1000;
 
-    if (userMax !== "") {
-      maxNum = userMax;
-    }
+    // If max was given update maxNum
+    maxNum = (userMax !== "" ? userMax : maxNum);
 
-    let rand = getRandomInclusive(minNum, maxNum);
+    let rand = getRandomInt(minNum, maxNum);
 
-    agent.add(`Here you go! user min is ${userMin} Min num is ${minNum} and max is ${maxNum}. Your random number is ${rand}`);
+    agent.add(`Here you go! Your random number is ${rand}`);
   }
 
 module.exports = giveRandomNumber;

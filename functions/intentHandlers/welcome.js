@@ -1,5 +1,6 @@
-const getRandomInclusive = require('../helpers/getRandomInclusive');
+const { getRandomElement } = require('../helpers/getRandom');
 
+// Welcome intent to introduce functionality of the app
 function welcome(agent) {
 
   let welcomes = [
@@ -9,7 +10,8 @@ function welcome(agent) {
     "I can give you a random number. What number range are you interested in?"
   ];
   
-  let response = welcomes[getRandomInclusive(0, 3)];
+  // Randomize given response
+  let response = getRandomElement(welcomes);
 
   agent.add(response);
 }
