@@ -1,15 +1,98 @@
 ## Table of Contents
 
-- [Overview](#overview)
-    - [Actions on Google](#actions-on-google)
-    - [DialogFlow](#dialogflow)
-    - [Firebase](#firebase)
 - [Step by Step Setup](#step-by-step-setup)
     - [Environment](#environment)
     - [Your First Agent](#your-first-agent)
     - [Webhook Initialization](#webhook-initialization)
     - [Local Testing](#local-testing)
+- [Overview](#overview)
+    - [Actions on Google](#actions-on-google)
+    - [DialogFlow](#dialogflow)
+    - [Firebase](#firebase)
 - [Useful Resources](#useful-resources)
+
+## Step by Step Setup
+
+Use these steps to get started building your own DialogFlow for the Google Assistant
+
+### Environment
+
+1. Go [here](https://myaccount.google.com/activitycontrols) to enable the following permissions on your google account
+    * Web + App Activity
+    * Device Info
+    * Voice and Audio Activity
+
+2. Install the firebase tools CLI: `npm -g install firebase-tools`
+
+3. Login to your Google account to use firebase: `firebase login`
+
+4. Create an Actions on Google project that we will use to connect DialogFlow to the Google Assistant.
+    * Go to the [Actions on Google console](https://console.actions.google.com)
+    * Add a new project
+    * Skip choosing a category
+    * Click Build > Actions in the left nav.
+    * Add an action, select Custom Intent, and build
+
+### Your First Agent
+
+1. Name your agent
+
+2. Import the DialogFlow intents and utterances zip file
+    * Click the gear icon to go to the settings page
+    * Switch to the Export and Import tab
+    * Restore from ZIP
+    * Select the zip file in your cloned repository    
+
+3. For each intent of your agent, scroll to the bottom of the page and enable webhook call for this intent
+
+### Webhook Initialization
+
+1. Open your terminal and navigate to the functions folder of your cloned repository
+
+2. Run `npm install` to get the required packages for the webhook code
+
+3. Tell firebase that this project is the one you're working on
+    * Go to the [Actions on Google console](https://console.actions.google.com)
+    * Click the gear icon and select Project Settings
+    * Copy the Project ID
+    * Run the command `firebase use <project-id>`
+
+4. Deploy the code to your firebase endpoint by using the command `firebase deploy`
+
+5. Find your endpoint URL now that the code has been deployed to firebase
+    * Go to the [Firebase console](https://console.firebase.google.com) and open your project
+    * Click the functions tab
+    * Copy the URL for your function
+
+6. Enable webhook fulfillment in DialogFlow
+    * Go to the [DialogFlow console](https://console.dialogflow.com) and open your project
+    * Open the fulfillment tab and enable webhooks
+    * Paste the firebase functions endpoint URL in the webhook URL field
+
+7. You can now test out your agent in DialogFlow's simulator or the Actions on Google Simulator!
+
+### Local Testing
+
+To test locally we will use a forwarded local host instead of having our fulfillment deployed to a firebase endpoint. This way we can see our saved logic changes without having to deploy every time we want to test.
+
+1. Install ngrok on your computer
+    * Go to the [ngrok homepage](https://ngrok.com/) and make an account with google
+    * Download ngrok and unzip the file
+    * In your terminal, navigate to the folder ngrok was saved to and use the command `mv ngrok /usr/local/bin` to move the executable to your bin folder. This allows you to use the ngrok command
+
+2. Serve your firebase function locally
+    * In your terminal navigate to the functions folder of your cloned repository
+    * Use the command `firebase serve --only functions`
+
+3. In a new terminal use the command `ngrok http 5000`
+
+4. Go to the [DialogFlow console](https://console.dialogflow.com) update the webhook URL
+    * Copy the ngrok forward https address and paste it in the webhook URL field _i.e. https://37822ef0.ngrok.io_
+    * Copy the firebase functions project path from the other terminal and append it to the webhook URL field _i.e. /templateagent-f4f03/us-central1/dialogflowFirebaseFulfillment_
+
+Your webhook should now read something along the lines of https://37822ef0.ngrok.io/templateagent-f4f03/us-central1/dialogflowFirebaseFulfillment
+
+Testing your changes in the DialogFlow simulator or the Actions on Google Simulator will now be in real-time with your saved code changes!
 
 ## Overview
 
@@ -51,68 +134,14 @@ We can import and export the agent's front-end files to copy intents and utteran
 
 Firebase is the hosting platform that we deploy our fulfillment code to. Firebase functions is just a way to host our logic on the internet in an easy, secure way. 
 
-Using the Firebase Command Line Interface (CLI) we can specify the project that we are deploying to using `firebase use <project-id>`. When we're in the functions folder of our project we can use `firebase deploy` to push our functions to our online firebase project. On the [firebase web console](console.firebase.com) we can now copy the URL for our endpoint and use it as our webhook endpoint address. Once the deployment has finished our new endpoint logic can be seen when testing our agent.
+Using the Firebase Command Line Interface (CLI) we can specify the project that we are deploying to using `firebase use <project-id>`. When we're in the functions folder of our project we can use `firebase deploy` to push our functions to our online firebase project. On the [firebase web console](https://www.console.firebase.com) we can now copy the URL for our endpoint and use it as our webhook endpoint address. Once the deployment has finished our new endpoint logic can be seen when testing our agent.
 
 We can test our agent locally using firebase functions as well. By using the command `firebase serve --only functions` we host our endpoint on `localhost:5000` appended with a firebase project path. If we send requests in the right format to our localhost, we can see the responses our endpoint would send to our DialogFlow agent on port 5000. 
 
-We can use the `ngrok` package to push our locally hosted endpoint to the internet using a randomly generated ngrok URL. Appending our firebase project path to the ngrok generated URL will have the same effect has serving with firebase, only our host is now accessible over the web. This means that this URL can be used as a webhook fulfillment URL in DialogFlow, and our local changes will propogate to our agent when testing.
-
-## Step by Step Setup
-
-Hi there, there will be a bunch of other steps here
-
-### Environment
-
-lol
-
-### Your First Agent
-
-hi
-
-### Webhook Initialization
-
-here it is
-
-### Local Testing
-
-lika dis
+We can use the `ngrok` [package](https://ngrok.com) to push our locally hosted endpoint to the internet using a randomly generated ngrok URL. Appending our firebase project path to the ngrok generated URL will have the same effect has serving with firebase, only our host is now accessible over the web. This means that this URL can be used as a webhook fulfillment URL in DialogFlow, and our local changes will propogate to our agent when testing.
 
 ## Useful Resources
 
-- DialogFlow Documentation: https://dialogflow.com/docs
-- Google Actions Documentation: https://developers.google.com/actions/dialogflow/
-- Codelabs Project: _(RECOMMENDED)_ https://codelabs.developers.google.com/codelabs/actions-1/
-
-## MD File features
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-- `create-react-app` is a global command-line utility that you use to create new projects.
-
-Here's a link [within](#step-by-step-setup) a line that goes to Step by Step setup
-Only files inside `public` can be used from `public/index.html`.<br>
-Read instructions below for using assets from JavaScript and HTML.
-
-
-```
-my-app/
-  README.md
-  node_modules/
-  package.json
-  public/
-    index.html
-    favicon.ico
-  src/
-    App.css
-    App.js
-    App.test.js
-    index.css
-    index.js
-    logo.svg
-```
-
-For the project to build, **these files must exist with exact filenames**:
-Learn more about [different proposal stages](https://babeljs.io/docs/plugins/#presets-stage-x-experimental-presets-).
-### `npm run eject`
-### Supported Language Features
-# What is this?
-recommend to _fork_
+- DialogFlow Documentation: [https://dialogflow.com/docs](https://dialogflow.com/docs)
+- Google Actions Documentation: [https://developers.google.com/actions/dialogflow/](https://developers.google.com/actions/dialogflow/)
+- Codelabs Project _(recommended_): [https://codelabs.developers.google.com/codelabs/actions-1/](https://codelabs.developers.google.com/codelabs/actions-1/)
