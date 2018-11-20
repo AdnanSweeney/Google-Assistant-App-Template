@@ -16,6 +16,9 @@ function giveRandomNumber(agent) {
     // If max was given update maxNum
     maxNum = (userMax !== "" ? userMax : maxNum);
 
+    // if max under min, update min
+    minNum = (minNum > maxNum ? maxNum - 1000 : minNum);
+
     let rand = getRandomInt(minNum, maxNum);
 
     agent.add(`Here you go! Your random number is ${rand}`);
