@@ -10,4 +10,4 @@ function getRandomElement(array) {
     return array[randomIndex];
 }
 
-module.exports = {getRandomInt, getRandomElement};
+module.exports = { getRandomInt, getRandomElement };
