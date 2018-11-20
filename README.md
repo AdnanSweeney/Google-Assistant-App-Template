@@ -87,10 +87,10 @@ To test locally we will use a forwarded local host instead of having our fulfill
 3. In a new terminal use the command `ngrok http 5000`
 
 4. Go to the [DialogFlow console](https://console.dialogflow.com) update the webhook URL
-    * Copy the ngrok forward https address and paste it in the webhook URL field _i.e. https://37822ef0.ngrok.io_
-    * Copy the firebase functions project path from the other terminal and append it to the webhook URL field _i.e. /templateagent-f4f03/us-central1/dialogflowFirebaseFulfillment_
+    * Copy the ngrok forward https address and paste it in the webhook URL field <br/> i.e. `https://37822ef0.ngrok.io`
+    * Copy the firebase functions project path from the other terminal and append it to the webhook URL field <br/> i.e. `/templateagent-f4f03/us-central1/dialogflowFirebaseFulfillment`
 
-Your webhook should now read something along the lines of https://37822ef0.ngrok.io/templateagent-f4f03/us-central1/dialogflowFirebaseFulfillment
+Your webhook should now read something along the lines of <br/>`https://37822ef0.ngrok.io/templateagent-f4f03/us-central1/dialogflowFirebaseFulfillment`
 
 Testing your changes in the DialogFlow simulator or the Actions on Google Simulator will now be in real-time with your saved code changes!
 
@@ -134,7 +134,7 @@ We can import and export the agent's front-end files to copy intents and utteran
 
 Firebase is the hosting platform that we deploy our fulfillment code to. Firebase functions is just a way to host our logic on the internet in an easy, secure way. 
 
-Using the Firebase Command Line Interface (CLI) we can specify the project that we are deploying to using `firebase use <project-id>`. When we're in the functions folder of our project we can use `firebase deploy` to push our functions to our online firebase project. On the [firebase web console](https://www.console.firebase.com) we can now copy the URL for our endpoint and use it as our webhook endpoint address. Once the deployment has finished our new endpoint logic can be seen when testing our agent.
+Using the Firebase Command Line Interface (CLI) we can specify the project that we are deploying to using `firebase use <project-id>`. When we're in the functions folder of our project we can use `firebase deploy` to push our functions to our online firebase project. On the [firebase web console](https://console.firebase.google.com) we can now copy the URL for our endpoint and use it as our webhook endpoint address. Once the deployment has finished our new endpoint logic can be seen when testing our agent.
 
 We can test our agent locally using firebase functions as well. By using the command `firebase serve --only functions` we host our endpoint on `localhost:5000` appended with a firebase project path. If we send requests in the right format to our localhost, we can see the responses our endpoint would send to our DialogFlow agent on port 5000. 
 
