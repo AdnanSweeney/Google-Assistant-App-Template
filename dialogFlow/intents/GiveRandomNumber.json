@@ -39,11 +39,7 @@
   "priority": 500000,
   "webhookUsed": true,
   "webhookForSlotFilling": false,
-  "lastUpdate": 1542658662,
+  "lastUpdate": 1542730255,
   "fallbackIntent": false,
-  "events": [
-    {
-      "name": "GOOGLE_ASSISTANT_WELCOME"
-    }
-  ]
+  "events": []
 }

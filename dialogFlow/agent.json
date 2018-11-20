@@ -4,10 +4,15 @@
   "disableInteractionLogs": false,
   "disableStackdriverLogs": true,
   "googleAssistant": {
-    "googleAssistantCompatible": false,
+    "googleAssistantCompatible": true,
     "project": "templateagent-f4f03",
     "welcomeIntentSignInRequired": false,
-    "startIntents": [],
+    "startIntents": [
+      {
+        "intentId": "14f9ed57-fc12-4714-8428-b1273e5064ce",
+        "signInRequired": false
+      }
+    ],
     "systemIntents": [],
     "endIntentIds": [],
     "oAuthLinking": {
@@ -17,6 +22,7 @@
     "voiceType": "MALE_1",
     "capabilities": [],
     "protocolVersion": "V2",
+    "autoPreviewEnabled": true,
     "isDeviceAgent": false
   },
   "defaultTimezone": "America/New_York",
