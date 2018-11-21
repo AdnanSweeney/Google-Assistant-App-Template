@@ -11,6 +11,7 @@ const {Card, Suggestion} = require('dialogflow-fulfillment');
 const welcome = require('./intentHandlers/welcome');
 const fallback = require('./intentHandlers/fallback');
 const giveRandomNumber = require('./intentHandlers/giveRandomNumber');
+const repeat = require('./intentHandlers/repeat');
 
 // enables lib debugging statements
 process.env.DEBUG = 'dialogflow:debug';
@@ -30,6 +31,7 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest((request, resp
   intentMap.set('Default Welcome Intent', welcome);
   intentMap.set('Default Fallback Intent', fallback);
   intentMap.set('GiveRandomNumber', giveRandomNumber);
+  intentMap.set('Repeat', repeat);
 
   // Parse received JSON payload for DialogFlow intent, execute corresponding handler, send response back
   agent.handleRequest(intentMap);

@@ -1,3 +1,4 @@
+const setLastEmitContext = require("../helpers/setLastEmitContext");
 const { getRandomInt } = require('../helpers/getRandom');
 
 function giveRandomNumber(agent) {
@@ -21,7 +22,10 @@ function giveRandomNumber(agent) {
 
     let rand = getRandomInt(minNum, maxNum);
 
-    agent.add(`Here you go! Your random number is ${rand}`);
+    let response = [`Here you go! Your random number is ${rand}`, "Ask for another one!"];
+
+    setLastEmitContext(agent, response);
+    agent.add(response);
   }
 
 module.exports = giveRandomNumber;

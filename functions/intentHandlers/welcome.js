@@ -1,3 +1,4 @@
+const setLastEmitContext = require("../helpers/setLastEmitContext");
 const { getRandomElement } = require('../helpers/getRandom');
 
 // Welcome intent to introduce functionality of the app
@@ -13,6 +14,7 @@ function welcome(agent) {
   // Randomize given response
   let response = getRandomElement(welcomes);
 
+  setLastEmitContext(agent, response);
   agent.add(response);
 }
 
