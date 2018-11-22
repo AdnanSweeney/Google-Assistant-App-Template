@@ -12,6 +12,7 @@ const welcome = require('./intentHandlers/welcome');
 const fallback = require('./intentHandlers/fallback');
 const giveRandomNumber = require('./intentHandlers/giveRandomNumber');
 const repeat = require('./intentHandlers/repeat');
+const help = require('./intentHandlers/help');
 
 // enables lib debugging statements
 process.env.DEBUG = 'dialogflow:debug';
@@ -32,6 +33,7 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest((request, resp
   intentMap.set('Default Fallback Intent', fallback);
   intentMap.set('GiveRandomNumber', giveRandomNumber);
   intentMap.set('Repeat', repeat);
+  intentMap.set('Help', help);
 
   // Parse received JSON payload for DialogFlow intent, execute corresponding handler, send response back
   agent.handleRequest(intentMap);
