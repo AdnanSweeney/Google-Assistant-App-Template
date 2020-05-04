@@ -1,0 +1,8 @@
+
+[1m[37m===[39m Serving from '/Users/adnan/googleAssistantAppTemplate'...[22m
+
+[1m[36mi [39m[22m [1m[36mfunctions:[39m[22m Preparing to emulate functions.
+Warning: You're using Node.js v10.10.0 but Google Cloud Functions only supports v6.11.5.
+[32minfo[39m: Outside fulfillment call
+[1m[32m✔ [39m[22m [1m[32mfunctions: [39m[22mdialogflowFirebaseFulfillment: [1mhttp://localhost:5000/templateagent-f4f03/us-central1/dialogflowFirebaseFulfillment[22m
+Shutting down...

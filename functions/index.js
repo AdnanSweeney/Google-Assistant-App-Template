@@ -17,6 +17,8 @@ const help = require('./intentHandlers/help');
 // enables lib debugging statements
 process.env.DEBUG = 'dialogflow:debug';
 
+console.log("Outside fulfillment call");
+
 
 
 exports.dialogflowFirebaseFulfillment = functions.https.onRequest((request, response) => {
@@ -26,6 +28,7 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest((request, resp
 
   console.log('Dialogflow Request headers: ' + JSON.stringify(request.headers));
   console.log('Dialogflow Request body: ' + JSON.stringify(request.body));
+  console.log("inside fulfillment call");
 
   // Map our intent handlers to DialogFlow intents
   let intentMap = new Map();

@@ -14,6 +14,9 @@ function welcome(agent) {
   // Randomize given response
   let response = getRandomElement(welcomes);
 
+  console.log("outside fulifillment file!");
+    
+
   setLastEmitContext(agent, response);
   agent.add(response);
 }
